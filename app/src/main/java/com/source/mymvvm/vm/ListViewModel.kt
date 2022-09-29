@@ -1,7 +1,8 @@
-package com.source.mymvvm.viewModel
+package com.source.mymvvm.vm
 
 import androidx.lifecycle.MutableLiveData
 import com.source.mymvvm.bean.ListItemBean
+import com.source.mymvvm.vm.base.BaseViewModel
 
 class ListViewModel : BaseViewModel() {
     val listData:MutableLiveData<ArrayList<ListItemBean>> by lazy {

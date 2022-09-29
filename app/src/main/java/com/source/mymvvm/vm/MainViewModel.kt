@@ -1,13 +1,11 @@
-package com.source.mymvvm.viewModel
+package com.source.mymvvm.vm
 
-import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.source.mymvvm.model.EventContants
 import com.source.mymvvm.model.EventModel
 import com.source.mymvvm.repo.MainReqManger
-import com.source.mymvvm.repo.services.ResResult
-import kotlinx.coroutines.delay
+import com.source.mymvvm.vm.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class MainViewModel : BaseViewModel() {
@@ -25,24 +23,8 @@ class MainViewModel : BaseViewModel() {
     fun doLogin(){
 
         viewModelScope.launch {
-            //判空
-            if(TextUtils.isEmpty(account.value) || TextUtils.isEmpty(password.value)){
-                mEventData.postValue(
-                    EventModel(
-                        EventContants.LOGIN_MESSAGE,
-                        data = hashMapOf(MSG to "",TYPE to "vaild")
-                    )
-                )
-                return@launch
-            }
-            var result: ResResult? = null
 
-            loadingBlock {
-
-                result = MainReqManger.login(account = account.value!!, password = password.value!!) ?: return@loadingBlock
-
-            }
-            delay(500)
+            val result = MainReqManger.login(account = account.value!!, password = password.value!!) ?: return@launch
 
             //发送结果
             mEventData.postValue(

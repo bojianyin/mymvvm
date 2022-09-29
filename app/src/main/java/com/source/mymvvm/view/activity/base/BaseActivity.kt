@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.source.mymvvm.MyApplication
 import com.source.mymvvm.model.EventContants
 import com.source.mymvvm.model.EventModel
 import com.source.mymvvm.view.dialog.LoadingDialog
-import com.source.mymvvm.viewModel.BaseViewModel
+import com.source.mymvvm.vm.base.BaseViewModel
 
 abstract class BaseActivity<T : ViewDataBinding,VM : BaseViewModel> : AppCompatActivity() {
 

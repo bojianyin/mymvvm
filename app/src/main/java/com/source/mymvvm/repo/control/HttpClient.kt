@@ -13,6 +13,7 @@ class HttpClient private constructor() {
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         mClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
+
             .connectTimeout(maxTime,TimeUnit.MILLISECONDS)
             .readTimeout(maxTime,TimeUnit.MILLISECONDS)
             .writeTimeout(maxTime,TimeUnit.MILLISECONDS)

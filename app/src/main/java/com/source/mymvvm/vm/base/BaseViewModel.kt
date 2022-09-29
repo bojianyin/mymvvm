@@ -1,4 +1,4 @@
-package com.source.mymvvm.viewModel
+package com.source.mymvvm.vm.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,4 +35,5 @@ open class BaseViewModel : ViewModel() {
             )
         }
     }
+
 }

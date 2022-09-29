@@ -5,7 +5,7 @@ import com.source.mymvvm.R
 import com.source.mymvvm.adapter.MyListAdapter
 import com.source.mymvvm.databinding.ActivityListBinding
 import com.source.mymvvm.view.activity.base.BaseActivity
-import com.source.mymvvm.viewModel.ListViewModel
+import com.source.mymvvm.vm.ListViewModel
 
 class ListActivity : BaseActivity<ActivityListBinding,ListViewModel>() {
     private val mList by lazy { dataBinding?.mList }

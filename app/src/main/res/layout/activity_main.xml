@@ -4,10 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.source.mymvvm.viewModel.MainViewModel"/>
+        <import type="com.source.mymvvm.vm.MainViewModel"/>
+        <import type="com.source.mymvvm.view.activity.MainActivity"/>
         <variable
             name="vm"
             type="MainViewModel" />
+        <variable
+            name="activity"
+            type="MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +47,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="30dp"
-            android:onClick='@{()->vm.doLogin()}'
+            android:onClick='@{() -> activity.doLogin()}'
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
