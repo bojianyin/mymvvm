@@ -1,4 +1,4 @@
-package com.source.mymvvm.activity.base
+package com.source.mymvvm.view.activity.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.source.mymvvm.model.EventModel
 import com.source.mymvvm.viewModel.BaseViewModel
 
-abstract class BaseActivity<T : ViewDataBinding,VM:BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<T : ViewDataBinding,VM : BaseViewModel> : AppCompatActivity() {
 
     var dataBinding:T? = null
     var mViewModel:VM? = null
@@ -31,9 +31,9 @@ abstract class BaseActivity<T : ViewDataBinding,VM:BaseViewModel> : AppCompatAct
 
     open fun doInit(){
 
-        mViewModel?.mEventData?.observe(this, {
+        mViewModel?.mEventData?.observe(this) {
             onEventMessage(it)
-        })
+        }
 
     }
 

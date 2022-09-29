@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.source.mymvvm"
         minSdkVersion 16
-        targetSdkVersion 33
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+
+//    implementation files('libs/retrofit-2.9.0.jar')
     def activity_version = "1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
@@ -53,4 +55,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     // Kotlin
     implementation "androidx.activity:activity-ktx:$activity_version"
+
+    implementation 'com.github.bumptech.glide:glide:4.14.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.0'
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation 'com.google.code.gson:gson:2.9.1'
 }

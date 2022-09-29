@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.source.mymvvm.bean.ListItemBean"/>
+        <variable
+            name="itemData"
+            type="ListItemBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:imageUrl='@{itemData.image}'
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:layout_below="@id/pic"
+            android:layout_alignTop="@id/pic"
+            android:layout_marginLeft="65dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:text='@{itemData.title}' />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/decContent"
+                android:text='@{itemData.dec}' />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_arrow_go"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+</layout>
