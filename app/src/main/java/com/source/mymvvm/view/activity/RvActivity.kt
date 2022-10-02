@@ -1,6 +1,8 @@
 package com.source.mymvvm.view.activity
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +40,7 @@ class RvActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mRv?.layoutManager = layoutManager
         mRv?.adapter = adapter
+        mRv?.setHasFixedSize(true)
         mRv?.addItemDecoration(StickHeaderDecoration(this))
 
         val dataInputStream = assets.open("area.json")
@@ -66,21 +69,13 @@ class RvActivity : AppCompatActivity() {
             val current = countryList[i].toString()
             val data = Gson().fromJson(current, AreaItemBean::class.java)
             data.pCode = Pinyin.toPinyin(data.cnName.first()).first()
-//            if(i==0){
-//                data.isHead = true
-//            }else{
-//                val pdata = dataArrayList[i-1]
-//                if(pdata!=null && data.pCode != pdata.pCode) data.isHead=true
-//            }
             val isHasCodeList = dataArrayList.filter {
                 it.pCode == data.pCode
             }
-
             val noHas = isHasCodeList.isEmpty()
             data.isHead = noHas
 
             dataArrayList.add(data)
-
 
         }
 
@@ -88,22 +83,17 @@ class RvActivity : AppCompatActivity() {
             it.pCode
         }
 
-        Log.d(TAG, "onCreate: "+dataArrayList)
         adapter.setData(dataArrayList)
 
-//        mRv?.addItemDecoration(TitleItemDecoration(this,object :
-//            TitleItemDecoration.TitleDecorationCallback {
-//            val mlist = adapter.mlist
-//            override fun isHeadItem(position: Int): Boolean {
-//
-//                return mlist[position].isHead
-//            }
-//
-//            override fun getHeadTitle(position: Int): String {
-//                return mlist[position].pCode.toString()
-//            }
-//
-//        }))
+
+        mRv?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val view = recyclerView.getChildAt(0) as TextView
+                Log.d(TAG, "onScrolled: ${view.top}")
+            }
+        })
+
 
     }
 

@@ -6,8 +6,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.view.marginLeft
 import com.source.mymvvm.R
@@ -15,12 +15,13 @@ import kotlinx.android.synthetic.main.widget_slide_tab.view.*
 import kotlin.collections.ArrayList
 
 class SlideTabWidget @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr) {
+        context: Context, attrs: AttributeSet? = null
+) : RoundRadiusWidget(context, attrs) {
 
     private var mlistData:ArrayList<TabEntry<*>> = arrayListOf()
 
     private var tabLayout:LinearLayout? = null
+    private var prevView:View? = null
     //滑动线
     private var line: View? = null
 
@@ -34,6 +35,7 @@ class SlideTabWidget @JvmOverloads constructor(
     }
 
     init {
+        setRadius(dptopx(10f).toInt())
         setBackgroundResource(R.drawable.bg_tab_radius)
         initLayout()
     }
@@ -117,6 +119,17 @@ class SlideTabWidget @JvmOverloads constructor(
         val screenW = context.resources.displayMetrics.widthPixels
         val v = pleft - screenW / 2 + it.width/2
         scrollBar.smoothScrollTo(v,0)
+
+        val select_tab_ani = AnimationUtils.loadAnimation(context, R.anim.select_tab_ani)
+        select_tab_ani.fillAfter = true
+        val unselect_tab_ani = AnimationUtils.loadAnimation(context, R.anim.unselect_tab_ani)
+        unselect_tab_ani.fillAfter = true
+        if(prevView!=null){
+            prevView?.startAnimation(unselect_tab_ani)
+        }
+
+        it.startAnimation(select_tab_ani)
+        prevView = it
     }
 
 

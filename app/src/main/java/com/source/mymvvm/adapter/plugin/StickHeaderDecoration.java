@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,6 +62,7 @@ public class StickHeaderDecoration extends RecyclerView.ItemDecoration {
      */
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        Log.d("onDraw", String.valueOf(parent.getChildCount()));
         if (parent.getAdapter() instanceof MyRvAdapter) {
             MyRvAdapter adapter = (MyRvAdapter) parent.getAdapter();
             int count = parent.getChildCount();//获取可见范围内Item的总数
@@ -91,6 +93,7 @@ public class StickHeaderDecoration extends RecyclerView.ItemDecoration {
      */
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+
         if (parent.getAdapter() instanceof MyRvAdapter) {
             MyRvAdapter adapter = (MyRvAdapter) parent.getAdapter();
             int position = ((LinearLayoutManager) (parent.getLayoutManager())).findFirstVisibleItemPosition();
