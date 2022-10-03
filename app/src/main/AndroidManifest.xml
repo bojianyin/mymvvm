@@ -13,21 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mymvvm"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activity.RvActivity">
-
-        </activity>
-        <activity
-            android:name=".view.activity.ListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:exported="true">
+        <activity android:name=".view.activity.PreImageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".view.activity.VpTabActivity">
+
+        </activity>
+        <activity android:name=".view.activity.RvActivity" />
+        <activity
+            android:name=".view.activity.ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

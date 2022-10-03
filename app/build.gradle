@@ -37,6 +37,9 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.ycjiang:ImagePreview:2.3.5'
+
 
 //    implementation files('libs/retrofit-2.9.0.jar')
     def activity_version = "1.2.0"
